@@ -21,13 +21,13 @@ The python script relies on the following dependencies
     glob
 
 ## Usage
-- Create a file called `credentials.py` in the same directory as `mail-students.py`. Add 2 lines to the file stating the the 
+Create a file called `credentials.py` in the same directory as `mail-students.py`. Add 2 lines to the file stating the the 
 email address you want to use and its password.  
     
     MY_ADDRESS = 'manmohan@iitb.ac.in'
     PASSWORD = 'isThisStrongEnough?'
 
-- Create message template files for the message body to be shared with recipients. 
+Create message template files for the message body to be shared with recipients. 
 For instance, to email every student in a class informing them of their test scores, the template message would look like,
 
     Dear ${PERSON_NAME},
@@ -40,7 +40,7 @@ For instance, to email every student in a class informing them of their test sco
     Teaching Assistant Team
     Email: narendra_modi@gmail.com with Prof Manmohan Singh (manmohan@iitb.ac.in) on CC if there are any discrepancies
 
-- Use your message template at the top of the main function
+Use your message template at the top of the main function
 
     message_template1 = read_template('messages/message_example.txt')
     
@@ -50,7 +50,7 @@ was [available here](https://www.cc.iitb.ac.in/page/configurewebmail).
 
      s = smtplib.SMTP(host='email-host-SMTP-server-name', port=PORT_NUMBER)
 
-- Save your spreadsheet containing email-addresses and other information as a `csv` file. For example the below CSV file `example.csv`. 
+Save your spreadsheet containing email-addresses and other information as a `csv` file. For example the below CSV file `example.csv`. 
 Keep the fields of the spread-sheet you want to use at the back of your head, these will be needed next.  
 
     Sl. No.,Roll No.,Name,Exam 01,Time Pen.
@@ -59,31 +59,31 @@ Keep the fields of the spread-sheet you want to use at the back of your head, th
     3,16D070012,Ishank Juneja,6,6
     4,16D070QT2,Jwaharlal Nehru,8,0
 
-- Specify the spread sheet file location in-
+Specify the spread sheet file location in-
 
     # Loop over all the students
     with open('/home/ishank/Desktop/EE229_student_marks/EE229-StudentList-29Sep.csv') as csv_file:
     
-- Now we must provide the script information about the various placeholders - {PERSON_NAME} etc. - used in the template message file.
+Now we must provide the script information about the various placeholders - {PERSON_NAME} etc. - used in the template message file.
 Do so by matching spreadsheet column headers with the place-holder names.
 
     message = message_template2.substitute(PERSON_NAME=row['Name'], TOTAL_SCORE=row['Exam 01'],
                                                        LATE_PENALTY=row['Time Pen.'])
                                                        
-- Specify From, to, CC etc,
+Specify From, to, CC etc,
 
     msg['From'] = MY_ADDRESS
     msg['To'] = row['Roll No.'] + "@iitb.ac.in"
     msg['Subject'] = "EE XYZ course Quiz 01 Marks"
     msg['CC'] = "manmohan@iitb.ac.in"
 
-- If PDF files, for instance graded answer scripts are to be attached, specify their folder locations instead of-
+If PDF files, for instance graded answer scripts are to be attached, specify their folder locations instead of-
 
     pdf_names = glob.glob('/home/ishank/Desktop/EE229_student_marks/Exam01_Q1_2_3_6_7_8_9_compressed/{0}*'.format(row['Roll No.'])) + \
             glob.glob('/home/ishank/Desktop/EE229_student_marks/Exam01_Q4_5_compressed/{0}*'.format(row['Roll No.']))
 The `glob` simply matches the file names to a template with the `*` acting like a placeholder for 0 or more characters.
 
-- A `try-except` block checks if sending an email was successful from the SMTP servers end, if not, it prints a message. For instance, the email might 
+A `try-except` block checks if sending an email was successful from the SMTP servers end, if not, it prints a message. For instance, the email might 
 fail if the PDF (or other) attachments are too large for the service. This does not guarantee the intended recipient gets the message since their email address might still be incorrect. 
 
 Another repository of interest might be: [PDF Tools]() which has tools for annotating, merging, splitting and compressing PDF files.
