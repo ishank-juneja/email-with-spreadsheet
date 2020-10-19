@@ -36,7 +36,7 @@ def main():
             #     continue
             # Create a new message object for every row of the CSV file
             msg = MIMEMultipart()
-            # Add in the actual person data to the appropraite message template
+            # Add in the actual person data to the appropriate message template
             if row['Time Pen.'] == "0":
                 message = message_template1.substitute(PERSON_NAME=row['Name'], TOTAL_SCORE=row['Exam 01'])
             elif row['Exam 01'] == "Ab":
@@ -50,7 +50,7 @@ def main():
             msg['From'] = MY_ADDRESS
             msg['To'] = row['Roll No.'] + "@iitb.ac.in"
             msg['Subject'] = "EE 229 Quiz 01 Marks"
-            # msg['CC'] = "animesh@ee.iitb.ac.in"
+            # msg['CC'] = "manmohan@iitb.ac.in"
             # add in the message body
             msg.attach(MIMEText(message, 'plain'))
             # Collection of PDF file names

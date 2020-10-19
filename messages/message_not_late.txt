@@ -1,9 +1,0 @@
-Dear ${PERSON_NAME},
-
-Your marks in Quiz 01 are ${TOTAL_SCORE} out of 14.
-You have not incurred any late penalty for this test.
-Please find attached your graded answer script(s).
-
-Regards,
-EE 229 Team
-Email: ishankjuneja@gmail.com with Prof Animesh (animesh@ee.iitb.ac.in) on CC if there are any discrepancies

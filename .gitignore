@@ -1,3 +1,6 @@
+message_late.txt
+message_not_late.txt
+message_absent.txt
 *.idea
 # File containing email credentials
 credentials.py
