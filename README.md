@@ -23,14 +23,12 @@ The python script relies on the following dependencies
 ## Usage
 - Create a file called `credentials.py` in the same directory as `mail-students.py`. Add 2 lines to the file stating the the 
 email address you want to use and its password.  
-
     
     MY_ADDRESS = 'manmohan@iitb.ac.in'
     PASSWORD = 'isThisStrongEnough?'
 
 - Create message template files for the message body to be shared with recipients. 
 For instance, to email every student in a class informing them of their test scores, the template message would look like,
-
 
     Dear ${PERSON_NAME},
 
@@ -44,19 +42,16 @@ For instance, to email every student in a class informing them of their test sco
 
 - Use your message template at the top of the main function
 
-
     message_template1 = read_template('messages/message_example.txt')
     
 - Set up a local SMTP server using the command, the port number for the outgoing SMTP server is usually 587. 
 For the details visit your email providers webpage. For instance, for my university [IIT Bombay](http://www.iitb.ac.in/), the iformatio
 was [available here](https://www.cc.iitb.ac.in/page/configurewebmail). 
 
-
      s = smtplib.SMTP(host='email-host-SMTP-server-name', port=PORT_NUMBER)
 
 - Save your spreadsheet containing email-addresses and other information as a `csv` file. For example the below CSV file `example.csv`. 
 Keep the fields of the spread-sheet you want to use at the back of your head, these will be needed next.  
-
 
     Sl. No.,Roll No.,Name,Exam 01,Time Pen.
     1,160110RF5,Narendra Modi,7,0
@@ -66,19 +61,16 @@ Keep the fields of the spread-sheet you want to use at the back of your head, th
 
 - Specify the spread sheet file location in-
 
-
     # Loop over all the students
     with open('/home/ishank/Desktop/EE229_student_marks/EE229-StudentList-29Sep.csv') as csv_file:
     
 - Now we must provide the script information about the various placeholders - {PERSON_NAME} etc. - used in the template message file.
 Do so by matching spreadsheet column headers with the place-holder names.
 
-
     message = message_template2.substitute(PERSON_NAME=row['Name'], TOTAL_SCORE=row['Exam 01'],
                                                        LATE_PENALTY=row['Time Pen.'])
                                                        
 - Specify From, to, CC etc,
-
 
     msg['From'] = MY_ADDRESS
     msg['To'] = row['Roll No.'] + "@iitb.ac.in"
@@ -86,7 +78,6 @@ Do so by matching spreadsheet column headers with the place-holder names.
     msg['CC'] = "manmohan@iitb.ac.in"
 
 - If PDF files, for instance graded answer scripts are to be attached, specify their folder locations instead of-
-
 
     pdf_names = glob.glob('/home/ishank/Desktop/EE229_student_marks/Exam01_Q1_2_3_6_7_8_9_compressed/{0}*'.format(row['Roll No.'])) + \
             glob.glob('/home/ishank/Desktop/EE229_student_marks/Exam01_Q4_5_compressed/{0}*'.format(row['Roll No.']))
