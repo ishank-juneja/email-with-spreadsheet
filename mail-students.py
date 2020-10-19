@@ -26,9 +26,14 @@ def main():
     s.starttls()
     s.login(MY_ADDRESS, PASSWORD)
     # Loop over all the students
-    with open('example.csv') as csv_file:
+    with open('EE229-StudentList-29Sep.csv') as csv_file:
         csv_reader = csv.DictReader(csv_file, delimiter=',')
         for row in csv_reader:
+            # Check if it is an empty row without name or roll number
+            if not (any(c.isalpha() for c in row['Name']) and row['Roll No.'].isalnum()):
+                continue
+            # if(row['Name'] in glob.glob('*,*')):
+            #     continue
             # Create a new message object for every row of the CSV file
             msg = MIMEMultipart()
             # Add in the actual person data to the message template
@@ -53,7 +58,7 @@ def main():
                 attach.add_header('Content-Disposition', 'attachment', filename=str(pdf_file_name))
                 msg.attach(attach)
             # send the message via the server set up earlier.
-            s.send_message(msg)
+            # s.send_message(msg)
             del msg
     # Terminate the SMTP session and close the connection
     s.quit()

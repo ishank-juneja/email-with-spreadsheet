@@ -1,10 +1,10 @@
 Dear ${PERSON_NAME},
 
-Your marks in Quiz 01 are ${TOTAL_SCORE} out of 14.
-Your Late Penalty is ${LATE_PENALTY}.
-Your net score after penalty in Quiz 01 is ${NET_SCORE} out of 14.
-Please find attached your graded answer script.
+Your marks in Quiz 01 are ${TOTAL_SCORE} out of 14 (Without Penalty).
+Late penalty will correspond to ${LATE_PENALTY} minutes.
+Please find attached your graded answer script(s).
 
 Regards,
 EE 229 Team
-Email: Prof Animesh Kumar on animesh@ee.iitb.ac.in if there is any discrepancy
+Email: ishankjuneja@gmail.com with Prof Animesh (animesh@ee.iitb.ac.in) on CC if there are any discrepancies
+
