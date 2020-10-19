@@ -1,0 +1,7 @@
+Dear ${PERSON_NAME},
+
+You are marked as absent for Quiz 01 in our records since no submission was received from you.
+
+Regards,
+EE 229 Team
+Email: ishankjuneja@gmail.com with Prof Animesh (animesh@ee.iitb.ac.in) on CC if there are any discrepancies

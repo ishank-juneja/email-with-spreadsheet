@@ -1,0 +1,9 @@
+Dear ${PERSON_NAME},
+
+Your marks in Quiz 01 are ${TOTAL_SCORE} out of 14 (Without Penalty).
+Late penalty will correspond to ${LATE_PENALTY} minutes.
+Please find attached your graded answer script(s).
+
+Regards,
+EE 229 Team
+Email: ishankjuneja@gmail.com with Prof Animesh (animesh@ee.iitb.ac.in) on CC if there are any discrepancies

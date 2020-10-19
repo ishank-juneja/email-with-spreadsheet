@@ -1,3 +1,4 @@
+*.idea
 # File containing email credentials
 credentials.py
 # Exclude all PDFs
