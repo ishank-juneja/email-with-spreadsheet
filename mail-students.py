@@ -18,9 +18,9 @@ def read_template(filename):
 
 
 def main():
-    message_template1 = read_template('message_not_late.txt')
-    message_template2 = read_template('message_late.txt')
-    message_template3 = read_template('message_absent.txt')
+    message_template1 = read_template('messages/message_not_late.txt')
+    message_template2 = read_template('messages/message_late.txt')
+    message_template3 = read_template('messages/message_absent.txt')
     # set up the SMTP server
     s = smtplib.SMTP(host='smtp-auth.iitb.ac.in', port=587)
     s.starttls()
@@ -64,11 +64,13 @@ def main():
                     attach = MIMEApplication(f.read(), _subtype="pdf")
                 attach.add_header('Content-Disposition', 'attachment', filename=str(pdf_file_name.split('/')[-1]))
                 msg.attach(attach)
-            # send the message via the server set up earlier.
+            # Send the message via the SMTP server set up earlier
             try:
                 s.send_message(msg)
+            # Sending the message may fail for various reasons
+            # All the reasons have been encapsulated in this exception
             except Exception:
-                print("An exception occurred for Roll Number {0}".format(row['Roll No.']))
+                print("An exception occurred for the message corresponding to Roll Number {0}".format(row['Roll No.']))
                 continue
             del msg
     # Terminate the SMTP session and close the connection
