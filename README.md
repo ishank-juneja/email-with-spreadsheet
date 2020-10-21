@@ -86,7 +86,7 @@ The `glob` simply matches the file names to a template with the `*` acting like 
 A `try-except` block checks if sending an email was successful from the SMTP servers end, if not, it prints a message. For instance, the email might 
 fail if the PDF (or other) attachments are too large for the service. This does not guarantee the intended recipient gets the message since their email address might still be incorrect. 
 
-Another repository of interest might be: [PDF Tools]() which has tools for annotating, merging, splitting and compressing PDF files.
+Another repository of interest might be: [PDF Tools](https://github.com/ishank-juneja/pdf-tools) which has tools for annotating, merging, splitting and compressing PDF files.
  
 ### References:
 [1] https://www.freecodecamp.org/news/send-emails-using-code-4fcea9df63f/
